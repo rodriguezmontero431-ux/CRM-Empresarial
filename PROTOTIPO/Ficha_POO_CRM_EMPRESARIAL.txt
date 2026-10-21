@@ -1,0 +1,55 @@
+FICHA DEL PROYECTO POO
+
+Grupo: Jose Leguizamon, Sergio Arevalo, Maria Fernanda Rodriguez
+Proyecto: CRM EMPRESARIAL
+Descripción: Nuestro CRM empresarial permite ver, generar reportes de ventas y poder visualizar todo el back office de una empresa de manera digital, mostrando estadísticas, clientes, potencial de clientes, metas, dashboard con toda la información, permite tener chat corporativo para servicio al cliente, apartado para montar PQRS, además tambien tiene un apartado para tener información de marketing de la empresa y mostrar el producto, en nuestro caso, esta enfocado al campo turistico por lo cuual muestra todo lo relacionado a aerolineas, agencias minoristas, ventas hoteles tarjetas de asistencias y muchas cosas mas.
+
+1. AGENTES Y SUS ACTIVIDADES
+- Agencias minoristas, empresas: Registrar y actualizar clientes, crear reporte de ventas de ventas, consultar el historial de compras, hacer seguimiento a negociaciones y analizar el potencial comercial de cada cliente ademas de mostrar todo el back office de la empresa
+- Administrador y gerencia de la empresa: Consultar ventas por fechas, clientes y aerolíneas, analizar tarifas, comparar resultados, identificar clientes potenciales y generar reportes turísticos.
+
+2. CLASES Y SUS MÉTODOS
+- Cliente: registrarCliente(); actualizarNegociacion(); marcarCartera();
+calcularVentasAcumuladas(); consultarHistorialVentas()
+- VentaTurística: validarVenta(); calcularTarifa(); convertirMoneda(); asignarCliente();
+asignarAerolinea(); calcularMargen()
+- reportes: DescargarVentas(); registrarVenta(); importarReporteZeuz(); consultarDashboard();
+generarReporte()
+- Aerolineas: registrarAerolinea(); calcularVentasAcumuladas(); calcularParticipacion();
+consultarVentasPorPeriodo()
+- parteTerrestre: registrarHotel(); calcularVentasAcumuladas(); calcularParticipacion();
+consultarVentasPorPeriodo() 
+
+3. CLASE ANALIZADA: VentaTuristica
+Atributos: id: Long;
+codigo: String;
+cliente: Cliente;
+aerolinea: Aerolinea;
+origen: String;
+destino: String;
+pasajero: String;
+fechaExpedicion: LocalDate;
+fechaSalida: LocalDate;
+fechaLlegada: LocalDate;
+numeroPasajeros: int;
+tarifa: BigDecimal;
+costo: BigDecimal;
+moneda: String;
+fareBasis: String;
+estado: EstadoVenta
+Validación (setter): La tarifa debe ser mayor o igual a cero; si se recibe un valor negativo, el setter debe rechazarlo. Además,
+la fecha de llegada no puede ser anterior a la fecha de salida y el número de pasajeros debe ser mayor
+que cero.
+
+4. HERENCIA
+Cliente-> VentaTuristica, Reporte
+Justificación (ES UN): Cliente ES UNA Persona porque posee identificación, nombre y datos de contacto.
+Reporte ES UNA Persona porque posee identificación, nombre y datos de contacto, además de
+credenciales y un rol dentro del sistema.
+
+5. RELACIONES QUE NO SON HERENCIA (TIENE UN)
+Cliente TIENE muchas VentaTuristica.
+VentaTuristica TIENE un Cliente.
+VentaTuristica TIENE una Aerolinea.
+Reporte registra una VentaTuristica.
+Cliente TIENE un estado de negociación y puede tener cartera.
